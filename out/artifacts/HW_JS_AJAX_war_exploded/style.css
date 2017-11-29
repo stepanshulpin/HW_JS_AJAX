@@ -1,0 +1,55 @@
+table{
+    margin: auto;
+    margin-top: 15px;
+    border: 4px double black;
+    border-collapse: collapse;
+    border-spacing: 7px 11px;
+    width: 750px;
+
+}
+
+td {
+    padding: 2px; /* Поля вокруг текста */
+    border: 1px double black; /* Граница вокруг ячеек */
+}
+
+th {
+    padding: 2px; /* Поля вокруг содержимого ячеек */
+    border: 1px solid black; /* Граница вокруг ячеек */
+}
+
+body {
+
+    font-family: 'Times New Roman', Times, serif; /* Гарнитура текста */
+    font-size: 30px; /* Размер шрифта в процентах */
+    background: linear-gradient(45deg, #EECFBA, #C5DDE8);
+
+}
+
+tbody tr:nth-child(odd){
+    text-align: center;
+    background: #edcfbb;
+
+}
+
+tbody tr:nth-child(even){
+    text-align: center;
+    background: #a5d4e8;
+}
+
+input[type=text] {
+    font-family: 'Times New Roman', Times, serif; /* Гарнитура текста */
+    font-size: 30px;
+    border-color: gray;
+    background-color: transparent;
+}
+
+input[type=button]{
+    font-family: 'Times New Roman', Times, serif; /* Гарнитура текста */
+    font-size: 30px;
+    background-color: transparent;
+    border-color: gray;
+    color: black;
+    margin: 4px 2px;
+    cursor: pointer;
+}
