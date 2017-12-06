@@ -1,24 +1,33 @@
-table{
-    margin: auto;
-    margin-top: 15px;
+.solveTable{
+    margin: 15px auto auto;
     border: 4px double black;
     border-collapse: collapse;
     border-spacing: 7px 11px;
     width: 750px;
+    text-align: center;
 
 }
 
-td {
-    padding: 2px; /* Поля вокруг текста */
-    border: 1px double black; /* Граница вокруг ячеек */
+.solveTable tbody tr:nth-child(odd) {
+    background: #edcfbb;
 }
 
-th {
-    padding: 2px; /* Поля вокруг содержимого ячеек */
-    border: 1px solid black; /* Граница вокруг ячеек */
+
+.solveTable tbody tr:nth-child(even) {
+    background: #a5d4e8;
 }
 
-body {
+.solveTable > * > tr > td {
+    padding: 2px;
+    border: 1px double black;
+}
+
+/*.solveTable th {
+    padding: 2px; !* Поля вокруг содержимого ячеек *!
+    border: 1px solid black; !* Граница вокруг ячеек *!
+}*/
+
+.solveBody {
 
     font-family: 'Times New Roman', Times, serif; /* Гарнитура текста */
     font-size: 30px; /* Размер шрифта в процентах */
@@ -26,25 +35,16 @@ body {
 
 }
 
-tbody tr:nth-child(odd){
-    text-align: center;
-    background: #edcfbb;
 
-}
 
-tbody tr:nth-child(even){
-    text-align: center;
-    background: #a5d4e8;
-}
-
-input[type=text] {
+.inputForm > input[type=text] {
     font-family: 'Times New Roman', Times, serif; /* Гарнитура текста */
     font-size: 30px;
     border-color: gray;
     background-color: transparent;
 }
 
-input[type=button]{
+.inputForm > input[type=button]{
     font-family: 'Times New Roman', Times, serif; /* Гарнитура текста */
     font-size: 30px;
     background-color: transparent;

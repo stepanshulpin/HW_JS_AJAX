@@ -1,25 +1,34 @@
+var equation = {};
+var table;
+function init() {
+
+    table=new Table(document.getElementById("Table"))
+
+}
+
 function checkIt() {
-    var a = document.square.square_a.value;
-    var b = document.square.square_b.value;
-    var c = document.square.square_c.value;
+
+    equation.a = document.square.square_a.value;
+    equation.b = document.square.square_b.value;
+    equation.c = document.square.square_c.value;
 
     var valid = true;
 
-    if (!isNaN(parseFloat(a)) && isFinite(a))
+    if (!isNaN(parseFloat(equation.a)) && isFinite(equation.a))
         document.square.square_a.setAttribute("style", "background-color: transparent;");
     else {
         document.square.square_a.setAttribute("style", "background-color: red;");
         valid=false;
     }
 
-    if (!isNaN(parseFloat(b)) && isFinite(b))
+    if (!isNaN(parseFloat(equation.b)) && isFinite(equation.b))
         document.square.square_b.setAttribute("style", "background-color: transparent;");
     else {
         document.square.square_b.setAttribute("style", "background-color: red;");
         valid=false;
     }
 
-    if (!isNaN(parseFloat(c)) && isFinite(c))
+    if (!isNaN(parseFloat(equation.c)) && isFinite(equation.c))
         document.square.square_c.setAttribute("style", "background-color: transparent;");
     else {
         document.square.square_c.setAttribute("style", "background-color: red;");
@@ -29,12 +38,52 @@ function checkIt() {
     document.square.square_sub.disabled=!valid;
 }
 
+function Table(tableref) {
+    this.addRow=function (newRow) {
+        var row = tableref.insertRow(tableref.rows.length);
+        row.onclick = function () {
+            row.parentNode.removeChild(row);
+        };
+        addCell(row.insertCell(0),newRow.a);
+        addCell(row.insertCell(1),newRow.b);
+        addCell(row.insertCell(2),newRow.c);
+        addCell(row.insertCell(3),newRow.x1);
+        addCell(row.insertCell(4),newRow.x2);
+    };
+
+}
+
+function addCell(cell, text) {
+    var content = document.createTextNode(text);
+    cell.appendChild(content);
+}
+
+function Row(x1,x2) {
+    this.a=equation.a;
+    this.b=equation.b;
+    this.c=equation.c;
+    this.x1=x1;
+    this.x2=x2;
+
+}
+
+function msg() {
+
+    return "?a="+equation.a+"&b="+equation.b+"&c="+equation.c;
+
+}
+
+function addSol(x1,x2) {
+    table.addRow(new Row(x1,x2));
+    var sol = document.getElementById("square_sol");
+    sol.innerHTML = "Корни: x<sub>1</sub>="+x1+"; x<sub>2</sub>="+x2+".";
+
+}
 
 function ajaxFunction() {
-
-    var a = document.square.square_a.value;
-    var b = document.square.square_b.value;
-    var c = document.square.square_c.value;
+    equation.a = document.square.square_a.value;
+    equation.b = document.square.square_b.value;
+    equation.c = document.square.square_c.value;
 
     var ajaxRequest;
     try {
@@ -52,48 +101,17 @@ function ajaxFunction() {
         }
     }
     ajaxRequest.onreadystatechange = function () {
-        if (ajaxRequest.readyState == 4) {
-            if (ajaxRequest.status == 200) {
+        if (ajaxRequest.readyState === 4) {
+            if (ajaxRequest.status === 200) {
 
                 var json = JSON.parse(ajaxRequest.responseText);
-
-                var table = document.getElementById("Table"); // Получаем ссылку на таблицу
-
-                var row = table.insertRow(table.rows.length); // Добавляем строку
-                row.onclick = function () {
-                    row.parentNode.removeChild(row);
-                };
-                var cell = row.insertCell(0);
-                var content = document.createTextNode(a);
-                cell.appendChild(content);
-
-                cell = row.insertCell(1);
-                content = document.createTextNode(b);
-                cell.appendChild(content);
-                cell = row.insertCell(2);
-                content = document.createTextNode(c);
-                cell.appendChild(content);
-                cell = row.insertCell(3);
-                content = document.createTextNode(json.x1);
-                cell.appendChild(content);
-                cell = row.insertCell(4);
-                content = document.createTextNode(json.x2);
-                cell.appendChild(content);
-
-                var sol = document.getElementById("square_sol");
-
-                string = "Корни: x<sub>1</sub>="+json.x1+"; x<sub>2</sub>="+json.x2+".";
-                sol.innerHTML = string;
-
-
+                addSol(json.x1,json.x2);
             }
             else {
                 alert("WARNING: " + ajaxRequest.status);
             }
         }
     };
-
-    var msg = "?a="+a+"&b="+b+"&c="+c;
-    ajaxRequest.open('GET', 'http://localhost:8080/solve'+msg, true);
+    ajaxRequest.open('GET', '/solve'+msg(), true);
     ajaxRequest.send(null);
 }
