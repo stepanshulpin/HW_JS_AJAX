@@ -6,11 +6,11 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b7c4226d-c5a0-4676-ad83-e363719d84f1" name="Default" comment="remake">
+    <list default="true" id="b7c4226d-c5a0-4676-ad83-e363719d84f1" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/script.js" afterPath="$PROJECT_DIR$/web/script.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/start.html" afterPath="$PROJECT_DIR$/web/start.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/style.css" afterPath="$PROJECT_DIR$/web/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/HW_JS_AJAX_war_exploded/script.js" afterPath="$PROJECT_DIR$/out/artifacts/HW_JS_AJAX_war_exploded/script.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/HW_JS_AJAX_war_exploded/start.html" afterPath="$PROJECT_DIR$/out/artifacts/HW_JS_AJAX_war_exploded/start.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/HW_JS_AJAX_war_exploded/style.css" afterPath="$PROJECT_DIR$/out/artifacts/HW_JS_AJAX_war_exploded/style.css" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -347,12 +347,20 @@
       <workItem from="1511969834183" duration="5944000" />
       <workItem from="1511983029070" duration="3257000" />
       <workItem from="1512198145348" duration="168000" />
-      <workItem from="1512550745890" duration="8000000" />
+      <workItem from="1512550745890" duration="8032000" />
     </task>
+    <task id="LOCAL-00001" summary="remake">
+      <created>1512559027871</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1512559027871</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19110000" />
+    <option name="totallyTimeSpent" value="19142000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />

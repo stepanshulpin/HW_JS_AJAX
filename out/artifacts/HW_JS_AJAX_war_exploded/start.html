@@ -6,14 +6,14 @@
     <meta http-equiv="content-type"
           content="text/html;charset=Windows-1251"/>
     <meta http-equiv="Content-Language" content="ru"/>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link type="text/css" rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
-<body>
+<body class="solveBody" onload="init();">
 
 <div align="center">
     <b>Решение квадратного уравнения a&middot;x&sup2; + b&middot;x + c = 0.</b>
-    <form name="square">
+    <form class="inputForm" name="square">
         a = <input name="square_a" type="text" value="1" size="4" onkeyup="checkIt();">
         b = <input name="square_b" type="text" value="2" size="4" onkeyup="checkIt();">
         c = <input name="square_c" type="text" value="1" size="4" onkeyup="checkIt();">
@@ -21,9 +21,10 @@
     </form>
     Решение: <span id="square_sol">Введите коэффициенты и нажмите "посчитать"</span>
 
-    <table id="Table">
+    <table class="solveTable" id="Table">
         <thead>
         <tr align="center">
+            <td>№</td>
             <td>A</td>
             <td>B</td>
             <td>C</td>
