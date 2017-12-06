@@ -39,23 +39,12 @@ function checkIt() {
 }
 
 function Table(tableref) {
-    this.addRow=function (newRow) {
-        var row = tableref.insertRow(tableref.rows.length);
-        row.onclick = function () {
-            row.parentNode.removeChild(row);
-        };
-        addCell(row.insertCell(0),newRow.a);
-        addCell(row.insertCell(1),newRow.b);
-        addCell(row.insertCell(2),newRow.c);
-        addCell(row.insertCell(3),newRow.x1);
-        addCell(row.insertCell(4),newRow.x2);
-    };
+    this.tableref=tableref;
+    this.rows =[];
+    this.addRow=function (newRow){
+        this.rows.push(newRow);
+    }
 
-}
-
-function addCell(cell, text) {
-    var content = document.createTextNode(text);
-    cell.appendChild(content);
 }
 
 function Row(x1,x2) {
@@ -67,6 +56,27 @@ function Row(x1,x2) {
 
 }
 
+function printTable() {
+    printRow(table.rows[table.rows.length-1]);
+}
+
+function printRow(item) {
+    var row = table.tableref.insertRow(table.tableref.rows.length);
+    row.onclick = function () {
+        row.parentNode.removeChild(row);
+    };
+    addCell(row.insertCell(0),item.a);
+    addCell(row.insertCell(1),item.b);
+    addCell(row.insertCell(2),item.c);
+    addCell(row.insertCell(3),item.x1);
+    addCell(row.insertCell(4),item.x2);
+}
+
+function addCell(cell, text) {
+    var content = document.createTextNode(text);
+    cell.appendChild(content);
+}
+
 function msg() {
 
     return "?a="+equation.a+"&b="+equation.b+"&c="+equation.c;
@@ -75,6 +85,7 @@ function msg() {
 
 function addSol(x1,x2) {
     table.addRow(new Row(x1,x2));
+    printTable(table);
     var sol = document.getElementById("square_sol");
     sol.innerHTML = "Корни: x<sub>1</sub>="+x1+"; x<sub>2</sub>="+x2+".";
 
